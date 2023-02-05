@@ -1,10 +1,9 @@
-import 'dart:ui';
 
 import 'package:flutter/material.dart';
 
  const List<Widget> meat = <Widget>[
   Text('🐷'),
-  Text('🐓'),
+  Text('🐔'),
   Text('🐏'),
   Text('🐟'),
 ];
@@ -23,6 +22,7 @@ class Page2 extends StatefulWidget {
 
 class _Page2State extends State<Page2> {
   String message = "";
+  int _currentSliderValue = 1;
   @override
   Widget build(BuildContext context) {
     // This method is rerun every time setState is called, for instance as done
@@ -53,31 +53,63 @@ class _Page2State extends State<Page2> {
             ],
           )),
               child: Center(
-                child: ToggleButtons(
-                  textStyle: const TextStyle(fontSize: 40 ),
-                  isSelected: _selectedMeat,
-                  onPressed: (int index) {
-                    setState(() {
-                      for (int buttonIndex = 0; buttonIndex < _selectedMeat.length; buttonIndex++) {
-                        if (buttonIndex == index) {
-                          _selectedMeat[buttonIndex] = true;
-                        } else {
-                          _selectedMeat[buttonIndex] = false;
-                        }
-                      }
-                    });
-                  },
-                  borderRadius: const BorderRadius.all(Radius.circular(8)),
-                  borderColor: Colors.transparent,
-                  selectedBorderColor: Colors.transparent,
-                  selectedColor: Colors.white,
-                  fillColor: Colors.red[200],
-                  color: Colors.red[400],
-                  constraints: const BoxConstraints(
-                    minHeight: 40.0,
-                    minWidth: 80.0,
-                  ),
-                  children: meat
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    const Text("Каким мясом угощаем?\n",
+                    style: TextStyle(fontSize: 25),
+                    textAlign: TextAlign.center,
+                    ),
+                    ToggleButtons(
+                      textStyle: const TextStyle(fontSize: 40 ),
+                      isSelected: _selectedMeat,
+                      onPressed: (int index) {
+                        setState(() {
+                          for (int buttonIndex = 0; buttonIndex < _selectedMeat.length; buttonIndex++) {
+                            if (buttonIndex == index) {
+                              _selectedMeat[buttonIndex] = true;
+                            } else {
+                              _selectedMeat[buttonIndex] = false;
+                            }
+                          }
+                        });
+                      },
+                      borderRadius: const BorderRadius.all(Radius.circular(8)),
+                      borderColor: Colors.transparent,
+                      selectedBorderColor: Colors.transparent,
+                      selectedColor: Colors.white,
+                      fillColor: Colors.red[200],
+                      color: Colors.red[400],
+                      constraints: const BoxConstraints(
+                        minHeight: 40.0,
+                        minWidth: 80.0,
+                      ),
+                      children: meat
+                    ),
+                    
+                    const Text("\nСколько человек угощаем?\n",
+                      textAlign: TextAlign.center,
+                      style: TextStyle(fontSize: 25 ),
+                  
+                      ),
+                    Text (_currentSliderValue.toString(),
+                      style: const TextStyle(fontSize: 18, color: Colors.blue ),
+                      
+                    ),
+                      
+                  Slider(
+                    value: _currentSliderValue.toDouble(),
+                    max: 30,
+                    divisions: 30,
+                    label: _currentSliderValue.round().toString(),
+                    onChanged: (double value) {
+                      setState(() {
+                        _currentSliderValue = value.toInt();
+                      });
+                    }
+                  )
+                  ],
+
                 ),
               )
              ),
