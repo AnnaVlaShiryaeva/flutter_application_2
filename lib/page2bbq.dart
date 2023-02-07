@@ -58,7 +58,7 @@ class _Page2State extends State<Page2> {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    const Text("Каким мясом угощаем?\n",
+                    const Text("2. Каким мясом угощаем?\n",
                     style: TextStyle(fontSize: 25),
                     textAlign: TextAlign.center,
                     ),
@@ -101,7 +101,7 @@ class _Page2State extends State<Page2> {
                       children: meat
                     ),
                     
-                    const Text("\nСколько человек угощаем?\n",
+                    const Text("\n3. Сколько человек угощаем?\n",
                       textAlign: TextAlign.center,
                       style: TextStyle(fontSize: 25 ),
                   

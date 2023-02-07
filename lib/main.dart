@@ -84,11 +84,12 @@ class _MyHomePageState extends State<MyHomePage> {
               child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              const Text("Расчитай угощения для своих гостей!\n\n",
+              const Text("\nРасчитай угощения для своих гостей!",
                 textAlign: TextAlign.center,
                 style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold ),
               ),
-              const Text("Чем будем угощать?\n",
+              const Spacer(),
+              const Text("1. Чем будем угощать?\n",
                 textAlign: TextAlign.center,
                 
                 style: TextStyle(fontSize: 25),
@@ -115,16 +116,22 @@ class _MyHomePageState extends State<MyHomePage> {
                       textStyle: const TextStyle(fontSize: 40)),
                       
                   onPressed: () {
-                    setState(() {
-                      message = "Ты королева!";
-                    });
                   },
                   child: const Text("🍺 пенное 🍺"),
                 ),
               ),
-              Text(
-                message,
-              )
+              Padding(
+                padding: const EdgeInsets.all(15.0),
+                child: TextButton(
+                  style: TextButton.styleFrom(
+                      textStyle: const TextStyle(fontSize: 40)),
+                      
+                  onPressed: () {
+                  },
+                  child: const Text("🍕пицца🍕"),
+                )
+              ),
+              const Spacer(),
             ],
           )
               //IconButton (icon: const Icon(Icons.sunny), onPressed: () {}),
