@@ -66,6 +66,9 @@ flutter:
     - assets/koko.mp3
     - assets/me.mp3
     - assets/boolk.mp3
+    - assets/pisk.mp3
+    - assets/privet.mp3
+    - assets/voi.mp3
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

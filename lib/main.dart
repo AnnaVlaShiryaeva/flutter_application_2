@@ -1,6 +1,9 @@
 
 import 'package:flutter/material.dart';
   import 'package:flutter_application_1/page2bbq.dart';
+import 'package:flutter_application_1/page3beer.dart';
+import 'package:flutter_application_1/page4pizza.dart';
+
 
 void main() {
   runApp(const MyApp());
@@ -116,6 +119,10 @@ class _MyHomePageState extends State<MyHomePage> {
                       textStyle: const TextStyle(fontSize: 40)),
                       
                   onPressed: () {
+                    Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => Page3(title: widget.title,)),
+                  );
                   },
                   child: const Text("🍺 пенное 🍺"),
                 ),
@@ -127,6 +134,10 @@ class _MyHomePageState extends State<MyHomePage> {
                       textStyle: const TextStyle(fontSize: 40)),
                       
                   onPressed: () {
+                    Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => Page4(title: widget.title,)),
+                  );
                   },
                   child: const Text("🍕пицца🍕"),
                 )
