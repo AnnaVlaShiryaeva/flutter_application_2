@@ -1,3 +1,4 @@
+
 import 'package:flutter/material.dart';
   import 'package:flutter_application_1/page2bbq.dart';
 
@@ -83,37 +84,43 @@ class _MyHomePageState extends State<MyHomePage> {
               child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.all(15.0),
-                    child: TextButton(
-                      style: TextButton.styleFrom(
-                          textStyle: const TextStyle(fontSize: 65)),
-                      onPressed: () {
-                       Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => Page2(title: widget.title,)),
-                      );
-                      },
-                      child: const Text("🐷"),
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.all(15.0),
-                    child: TextButton(
-                      style: TextButton.styleFrom(
-                          textStyle: const TextStyle(fontSize: 65)),
-                      onPressed: () {
-                        setState(() {
-                          message = "Ты королева!";
-                        });
-                      },
-                      child: const Text("👑"),
-                    ),
-                  ),
-                ],
+              const Text("Расчитай угощения для своих гостей!\n\n",
+                textAlign: TextAlign.center,
+                style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold ),
+              ),
+              const Text("Чем будем угощать?\n",
+                textAlign: TextAlign.center,
+                
+                style: TextStyle(fontSize: 25),
+              ),
+
+              Padding(
+                padding: const EdgeInsets.all(15.0),
+                child: TextButton(
+                  style: TextButton.styleFrom(
+                      textStyle: const TextStyle(fontSize: 40)),
+                  onPressed: () {
+                   Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => Page2(title: widget.title,)),
+                  );
+                  },
+                  child: const Text("🥩 шашлык 🥩"),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(15.0),
+                child: TextButton(
+                  style: TextButton.styleFrom(
+                      textStyle: const TextStyle(fontSize: 40)),
+                      
+                  onPressed: () {
+                    setState(() {
+                      message = "Ты королева!";
+                    });
+                  },
+                  child: const Text("🍺 пенное 🍺"),
+                ),
               ),
               Text(
                 message,

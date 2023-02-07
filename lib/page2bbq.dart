@@ -1,5 +1,7 @@
 
+import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
+
 
  const List<Widget> meat = <Widget>[
   Text('🐷'),
@@ -63,7 +65,19 @@ class _Page2State extends State<Page2> {
                     ToggleButtons(
                       textStyle: const TextStyle(fontSize: 40 ),
                       isSelected: _selectedMeat,
-                      onPressed: (int index) {
+                      onPressed: 
+                      (int index) async {
+                      if (index==0){
+                        final player = AudioPlayer();
+                        await player.play(AssetSource('khru.mp3'));
+                      }
+                      else if (index==1){final player = AudioPlayer();
+                        await player.play(AssetSource('koko.mp3'));}
+                      else if (index==2){final player = AudioPlayer();
+                        await player.play(AssetSource('me.mp3'));}  
+                      else if (index==3){ final player = AudioPlayer();
+                        await player.play(AssetSource('boolk.mp3'));}
+
                         setState(() {
                           for (int buttonIndex = 0; buttonIndex < _selectedMeat.length; buttonIndex++) {
                             if (buttonIndex == index) {
@@ -99,6 +113,7 @@ class _Page2State extends State<Page2> {
                       
                   Slider(
                     value: _currentSliderValue.toDouble(),
+                    thumbColor: Colors.red,
                     max: 30,
                     divisions: 30,
                     label: _currentSliderValue.round().toString(),
@@ -107,6 +122,7 @@ class _Page2State extends State<Page2> {
                         _currentSliderValue = value.toInt();
                       });
                     }
+
                   )
                   ],
 
