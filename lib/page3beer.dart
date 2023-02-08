@@ -1,14 +1,12 @@
-
 import 'package:flutter/material.dart';
 
 const List<Widget> time = <Widget>[
- Text(' 2-4 часа '),
-  Text(' 4-6 часов '),
+  Text(' 4 часа '),
+  Text(' 4-8 часов '),
   Text(' до утра!'),
 ];
 
 final List<bool> _selectedTime = <bool>[true, false, false];
-
 
 class Page3 extends StatefulWidget {
   const Page3({super.key, required this.title});
@@ -20,10 +18,25 @@ class Page3 extends StatefulWidget {
 }
 
 class _Page3State extends State<Page3> {
-  String message = "";
+  String result = "";
+  String getResult() {
+    double timeFuctor;
+    if (_selectedTime[0]) {
+      timeFuctor = 1;
+    } else if (_selectedTime[1]) {
+      timeFuctor = 1.25;
+    } else {
+      timeFuctor = 1.75;
+    }
+    String l = ((_currentSliderValueWomen * 1.5 + _currentSliderValueMen * 2) *
+            timeFuctor)
+        .toStringAsPrecision(2);
+
+    return "$lл. пенного";
+  }
+
   int _currentSliderValueWomen = 1;
   int _currentSliderValueMen = 1;
-
 
   @override
   Widget build(BuildContext context) {
@@ -56,11 +69,12 @@ class _Page3State extends State<Page3> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                const Text("\nПЕННОЕ",
-                textAlign: TextAlign.center,
-                style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold ),
-              ),
-              const Spacer(),
+                const Text(
+                  "\nПЕННОЕ",
+                  textAlign: TextAlign.center,
+                  style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
+                ),
+                const Spacer(),
                 const Text(
                   "2. Сколько женщин в компании?\n",
                   style: TextStyle(fontSize: 23),
@@ -79,6 +93,7 @@ class _Page3State extends State<Page3> {
                     onChanged: (double value) {
                       setState(() {
                         _currentSliderValueWomen = value.toInt();
+                        result = getResult();
                       });
                     }),
                 const Text(
@@ -99,9 +114,10 @@ class _Page3State extends State<Page3> {
                     onChanged: (double value) {
                       setState(() {
                         _currentSliderValueMen = value.toInt();
+                        result = getResult();
                       });
                     }),
-                    const Text(
+                const Text(
                   "4. Как долго планируете веселиться?\n",
                   style: TextStyle(fontSize: 23),
                   textAlign: TextAlign.center,
@@ -120,9 +136,9 @@ class _Page3State extends State<Page3> {
                             _selectedTime[buttonIndex] = false;
                           }
                         }
+                        result = getResult();
                       });
                     },
-                    
                     borderRadius: const BorderRadius.all(Radius.circular(8)),
                     borderColor: Colors.black,
                     selectedBorderColor: Colors.black,
@@ -134,10 +150,23 @@ class _Page3State extends State<Page3> {
                       minWidth: 80.0,
                     ),
                     children: time),
-                    
                 const Text("\nРецепт вашего веселья:\n",
                     textAlign: TextAlign.center,
                     style: TextStyle(fontSize: 23)),
+                Container(
+                  decoration: BoxDecoration(
+                      color: const Color.fromARGB(255, 237, 195, 195),
+                      borderRadius: const BorderRadius.all(Radius.circular(20)),
+                      border: Border.all(
+                          color: const Color.fromARGB(255, 242, 221, 221))),
+                  child: Padding(
+                    padding: const EdgeInsets.fromLTRB(20, 2.5, 20, 2.5),
+                    child: Text(
+                      result,
+                      style: const TextStyle(fontSize: 23),
+                    ),
+                  ),
+                ),
                 const Spacer(),
               ],
             ),

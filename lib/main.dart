@@ -87,7 +87,7 @@ class _MyHomePageState extends State<MyHomePage> {
               child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              const Text("\nРасчитай угощения для своих гостей!",
+              const Text("\nРассчитай угощения для своих гостей!",
                 textAlign: TextAlign.center,
                 style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold ),
               ),

@@ -38,11 +38,11 @@ class _Page2State extends State<Page2> {
     }
     double hungerFactor;
     if (_selectedHungerState[0]) {
-      hungerFactor = 0.9;
+      hungerFactor = 0.75;
     } else if (_selectedHungerState[1]) {
       hungerFactor = 1;
     } else {
-      hungerFactor = 1.1;
+      hungerFactor = 1.25;
     }
     String meatString;
     if (_selectedMeat[0]) {
@@ -153,7 +153,7 @@ class _Page2State extends State<Page2> {
                 ),
                 Text(
                   _currentPeopleSliderValue.toString(),
-                  style: const TextStyle(fontSize: 18, color: Colors.blue),
+                  style: const TextStyle(fontSize: 18, color: Color.fromARGB(255, 6, 6, 6)),
                 ),
                 Slider(
                     value: _currentPeopleSliderValue.toDouble(),
